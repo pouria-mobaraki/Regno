@@ -1,38 +1,877 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma, sans-serif;
+  direction: rtl;
+  background-color: #f1f2f7;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*  هدر */
+.site-header {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 2px solid #ddd;
+  padding: 25px 0;
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* سایدبار */
+.sidebar {
+  width: 50px;
+  /* padding: 20px 0; */
+  border-left: 2px solid #ddd;
+  background-color: #fff;
+  box-sizing: border-box;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* محتوای اصلی */
+.main-layout {
   display: flex;
-  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f5f6fa;
+  min-height: calc(100vh - 72px); /* با فرض ارتفاع هدر */
+}
+
+.main-content-wrapper {
+  margin-bottom: 30px;
+  padding-right: 24px;
+}
+
+/* استایل کارت ها */
+.stat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.stat-card {
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex: 1 1 100%;
+  align-items: center;
+  gap: 16px;
+  padding: 30px;
+  flex: 1;
+  min-width: 200px;
+  min-height: 150px;
+  max-width: 250px;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #fff;
+  font-size: 18px;
 }
 
-.App-link {
-  color: #61dafb;
+.stat-info {
+  flex: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.stat-title {
+  margin: 0;
+  font-size: 12px;
+  color: #fff;
+}
+
+.stat-value {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* کدهای مربوط به  DashboardReport */
+
+.first-line-dashboard,
+.second-line-dashboard {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.first-line-dashboard {
+  min-height: 300px;
+  margin-right: 20px;
+}
+
+.second-line-dashboard {
+  margin-right: 20px;
+}
+
+.first-line-dashboard > *,
+.second-line-dashboard > * {
+  flex: 1 2 48%;
+  /* min-width: 300px; */
+}
+
+.first-line-dashboard > *:first-child {
+  flex: 5;
+}
+
+.first-line-dashboard > *:last-child {
+  flex: 1;
+}
+
+/* کدهای مربوط به reportchart */
+.report-chart-container {
+  background-color: #ffffff !important;
+  border-radius: 16px;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.report-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+.report-chart-header div {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  border-bottom: 1px solid blue;
+  padding-bottom: 11px;
+}
+
+.report-chart-header div a {
+  color: blue;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.report-chart-header div a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 0%;
+  height: 2px;
+  background-color: blue;
+  transition: width 0.3s;
+}
+
+.report-chart-header div a:hover::after {
+  width: 100%;
+}
+
+.report-chart-content {
+  display: flex;
+  gap: 50px;
+  background-color: transparent;
+  padding-bottom: 5px;
+}
+
+.report-chart-right-content {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.report-chart-right-content img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.report-chart-contetnt_info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.report-chart-left-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* کدهای مربوط به totlaincomechart */
+
+.total-income-container {
+  background-color: #ffffff !important;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.total-income-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+.total-income-title h4 {
+  margin-bottom: 5px;
+}
+
+.total-income-title span {
+  color: #666;
+  font-size: 14px;
+}
+
+.totla-income-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 36px;
+  gap: 15px;
+  padding-top: 20px;
+}
+
+.total-content-charts {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 100%;
+  margin-bottom: 8px;
+}
+
+.totla-income-content a {
+  text-decoration: none;
+}
+.totla-income-content a:hover {
+  color: #3a43f8;
+}
+
+/* کدهای مربوط به salesMounth */
+.sales-mounth-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff !important;
+  border-radius: 16px;
+  padding: 10px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-height: 400px;
+  gap: 45px;
+}
+
+.sales-mounth-right-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sales-mounth-right-header {
+  margin-bottom: 15px;
+}
+
+.sales-mounth-right-header h4 {
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.sales-mounth-right-header span {
+  color: #666;
+}
+
+.sales-mounth-right-chart {
+  width: 500px;
+  height: 315px;
+  background-color: lightyellow;
+  margin-bottom: 26px;
+}
+
+.sales-mounth-right-link {
+  margin-top: auto;
+  display: flex;
+  justify-content: right;
+  padding-top: 16px;
+  background-color: cornflowerblue;
+  padding: 13px;
+  border-radius: 10px;
+}
+
+.sales-mounth-right-link:hover {
+  background-color: #3a43f8;
+  transition: 0.3s;
+}
+
+.sales-mounth-right-link-img {
+  width: 50px;
+}
+
+.monthly-sales-link {
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-mounth-left-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 50px;
+}
+
+.sales-mounth-left-content_chart {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sales-mount-rectangle-chart {
+  margin-bottom: 10px;
+  background-color: green;
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.sales-mounth-left-contetnt_title {
+  margin-bottom: 30px;
+}
+
+.sales-mounth-left-content_chart-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sales-mounth-left-contetnt_title h4 {
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.sales-mounth-left-contetnt_title span {
+  color: #666;
+}
+
+.sales-mounth-left-contetnt_link {
+  width: 100%;
+  background-color: orange;
+  height: 100%;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px 0;
+  transition: 0.3s;
+}
+
+.sales-mounth-left-contetnt_link:hover {
+  background-color: rgba(224, 150, 13, 0.729);
+}
+
+.sales-mounth-left-contetnt_link a {
+  text-decoration: none;
+  color: #fff;
+}
+.second-line-dashboard > *:first-child {
+  flex: 4.5;
+}
+
+.second-line-dashboard > *:last-child {
+  flex: 1.5;
+}
+
+/* کدهای مربوط به  employerList */
+
+.employer-list-container {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  /* align-items: center; */
+  background-color: #ffffff !important;
+  border-radius: 16px;
+  padding: 0 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-height: 400px;
+  gap: 17px;
+}
+
+.employer-list-title {
+  /* margin-bottom: 15px; */
+  width: 100%;
+}
+
+.employer-list-title h4 {
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.employer-list-title span {
+  color: #666;
+}
+
+.employer-list-profile {
+  background-color: lightblue;
+  border-radius: 10px;
+  min-height: 60px;
+  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.employer-list-profile-img {
+  width: 50px;
+  height: 50px;
+  background-color: #55efc4;
+}
+.employer-list-profile-name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.employer-list-buyer {
+}
+
+.employer-list-buyer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.employer-list-buyer-circle-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.employer-circle-info {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: skyblue;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.employer-circle-info span {
+  position: absolute;
+  top: 2rem;
+  min-width: 61px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.employer-list-total-employer {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.employer-list-total-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.employer-list-total-right-titile {
+}
+
+.employer-list-total-right-number {
+}
+
+.employer-list-total-left {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: gray;
+}
+
+.employer-list-link {
+  background-color: cornflowerblue;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.employer-list-link:hover {
+  background-color: #3a43f8;
+}
+
+.employer-list-link a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* استایل کامپونت MainContent */
+
+.stat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ریسپانسیو */
+/* @media (max-width: 1024px) {
+  .stat-grid {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 768px) {
+  .first-line-dashboard > *,
+  .second-line-dashboard > * {
+    flex: 1 1 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; 
+  }
+}
+ */
+
+@media (max-width: 768px) {
+  /* ساختار کلی */
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding: 16px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  /* first-line-dashboard */
+  .first-line-dashboard {
+    flex-direction: column;
+    margin-right: 0;
+    gap: 1rem;
+  }
+
+  .first-line-dashboard > * {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .first-line-dashboard > *:first-child,
+  .first-line-dashboard > *:last-child {
+    flex: 1 1 100%;
+  }
+
+  /* second-line-dashboard */
+  .second-line-dashboard {
+    flex-direction: column;
+    margin-right: 0;
+    gap: 1rem;
+  }
+
+  .second-line-dashboard > * {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  .second-line-dashboard > *:first-child,
+  .second-line-dashboard > *:last-child {
+    flex: 1 1 100%;
+  }
+
+  /* report-chart */
+  .report-chart-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .report-chart-right-content,
+  .report-chart-left-content,
+  .report-chart-contetnt_info {
+    flex: 1 1 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .report-chart-right-content img {
+    max-width: 200px;
+    max-height: 150px;
+  }
+
+  /* salesMounth */
+  .sales-mounth-container {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .sales-mounth-right-chart {
+    width: 100%;
+    height: auto;
+  }
+
+  .sales-mounth-right-link {
+    justify-content: center;
+  }
+
+  /* total-income */
+  .totla-income-content {
+    flex-direction: column;
+  }
+
+  /* employer-list */
+  .employer-list-profile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .employer-list-profile-img {
+    align-self: center;
+  }
+}
+
+/* ... */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .stat-card:nth-child(-n + 3) {
+    flex: 1 1 calc(33.333% - 16px);
+  }
+
+  .stat-card:nth-child(n + 4) {
+    flex: 1 1 calc(50% - 16px);
+  }
+}
+
+/* دسکتاپ: ۵ تا کنار هم */
+@media (min-width: 1025px) {
+  .stat-card {
+    flex: 1 1 calc(20% - 16px);
+  }
+}
+
+/* .... */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none; /* مخفی کردن سایدبار در موبایل و تبلت */
+  }
+
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .stat-grid {
+    justify-content: center;
+  }
+
+  .stat-card {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .first-line-dashboard > *,
+  .second-line-dashboard > * {
+    flex: 1 1 100%;
+  }
+
+  .report-chart-content {
+    flex-direction: column;
+  }
+
+  .sales-mounth-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .sales-mounth-right-chart {
+    width: 100%;
+    height: auto;
+  }
+
+  .sales-mounth-left-content {
+    padding: 0;
+  }
+
+  .sales-mounth-left-contetnt_link {
+    margin-top: 20px;
+  }
+
+  .employer-list-buyer-circle-info {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 537px) {
+  .report-chart-header div {
+    justify-content: space-evenly;
+    gap: 11px;
+    width: 70%;
+  }
+
+  .report-chart-header div a {
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 426px) {
+  .report-chart-header div {
+    justify-content: space-evenly;
+    gap: 11px;
+    width: 70%;
+  }
+
+  .report-chart-header div a {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .report-chart-header h4 {
+    width: 20%;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .employer-list-profile-name {
+    margin: 0 auto;
+  }
+
+  .employer-list-buyer-content h4,
+  span {
+    font-size: 13px;
+  }
+
+  .employer-list-buyer-circle-info {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 39px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 350px) {
+  .report-chart-header div a {
+    font-size: 8px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  .employer-list-profile-name {
+    margin: 0 auto;
+  }
+
+  .employer-list-title h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .employer-list-title span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sales-mounth-right-header h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sales-mounth-right-header span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sales-mounth-left-contetnt_title h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sales-mounth-left-contetnt_title span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .total-income-title h4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .total-income-title span {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .report-chart-right-content {
+    display: none;
   }
 }
