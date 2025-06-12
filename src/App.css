@@ -16,7 +16,6 @@ body {
 /* سایدبار */
 .sidebar {
   width: 50px;
-  /* padding: 20px 0; */
   border-left: 2px solid #ddd;
   background-color: #fff;
   box-sizing: border-box;
@@ -188,7 +187,7 @@ body {
 }
 
 .report-chart-right-content {
-  flex: 2;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,12 +201,54 @@ body {
 }
 
 .report-chart-contetnt_info {
-  flex: 1;
+  flex: 0.7;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 14px;
   color: #666;
+}
+
+.report-chart-content_info-right {
+  /* width: 100%; */
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.report-chart-content_info-right div {
+  display: flex;
+  /* width: 100%; */
+  /* justify-content: space-around; */
+  gap: 20px;
+  align-items: center;
+}
+
+.report-chart-content_info-right div span {
+  font-weight: 600;
+}
+
+.rep-chart-shape-right {
+  width: 25px;
+  height: 25px;
+  background-color: green;
+  border-radius: 5px;
+}
+
+.report-chart-content_info-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  max-width: 120px;
+  min-width: 100px;
+  align-items: center;
+  gap: 10px;
+}
+
+.report-chart-content_info-left span {
+  font-weight: 600;
 }
 
 .report-chart-left-content {
@@ -236,7 +277,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-  gap: 20px;
+  /* gap: 20px; */
 }
 
 .total-income-title {
@@ -265,11 +306,11 @@ body {
 }
 
 .total-content-charts {
-  width: 100px;
+  /* width: 100px;
   height: 100px;
   background-color: red;
   border-radius: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 8px; */
 }
 
 .totla-income-content a {
@@ -296,6 +337,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .sales-mounth-right-header {
@@ -313,10 +355,13 @@ body {
 }
 
 .sales-mounth-right-chart {
-  width: 500px;
+  width: 100%;
   height: 315px;
-  background-color: lightyellow;
+  /* background-color: lightyellow; */
   margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sales-mounth-right-link {
@@ -354,8 +399,9 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 70%;
   padding: 0 50px;
+  gap: 14px;
 }
 
 .sales-mounth-left-content_chart {
@@ -565,32 +611,59 @@ body {
 }
 
 /* ریسپانسیو */
-/* @media (max-width: 1024px) {
-  .stat-grid {
+
+
+
+ @media (max-width: 1024px) {
+  .sidebar {
+    display: none; /* مخفی کردن سایدبار در موبایل و تبلت */
+  }
+
+  .main-layout {
     flex-direction: column;
   }
-}
 
-@media (max-width: 768px) {
+  .stat-grid {
+    justify-content: center;
+  }
+
+  .stat-card {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
   .first-line-dashboard > *,
   .second-line-dashboard > * {
     flex: 1 1 100%;
   }
-}
 
+  .report-chart-content {
+    flex-direction: column;
+  }
 
-@media (max-width: 768px) {
-  .main-content {
-    padding: 16px;
+  .sales-mounth-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .sales-mounth-right-chart {
+    width: 100%;
+    height: auto;
+  }
+
+  .sales-mounth-left-content {
+    padding: 0;
+  }
+
+  .sales-mounth-left-contetnt_link {
+    margin-top: 20px;
+  }
+
+  .employer-list-buyer-circle-info {
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }
-
-@media (max-width: 768px) {
-  .sidebar {
-    display: none; 
-  }
-}
- */
 
 @media (max-width: 768px) {
   /* ساختار کلی */
@@ -711,56 +784,7 @@ body {
 
 /* .... */
 
-@media (max-width: 1024px) {
-  .sidebar {
-    display: none; /* مخفی کردن سایدبار در موبایل و تبلت */
-  }
 
-  .main-layout {
-    flex-direction: column;
-  }
-
-  .stat-grid {
-    justify-content: center;
-  }
-
-  .stat-card {
-    max-width: 100%;
-    flex: 1 1 100%;
-  }
-
-  .first-line-dashboard > *,
-  .second-line-dashboard > * {
-    flex: 1 1 100%;
-  }
-
-  .report-chart-content {
-    flex-direction: column;
-  }
-
-  .sales-mounth-container {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .sales-mounth-right-chart {
-    width: 100%;
-    height: auto;
-  }
-
-  .sales-mounth-left-content {
-    padding: 0;
-  }
-
-  .sales-mounth-left-contetnt_link {
-    margin-top: 20px;
-  }
-
-  .employer-list-buyer-circle-info {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-}
 
 @media (max-width: 537px) {
   .report-chart-header div {
@@ -773,6 +797,16 @@ body {
     font-size: 11px;
     font-weight: 700;
   }
+  .report-chart-content_info-right {
+    width: 100%;
+    gap :5px
+  }
+
+  .report-chart-content_info-left {
+    gap: 14px;
+  }
+
+
 }
 
 @media (max-width: 426px) {
@@ -861,14 +895,14 @@ body {
   }
 
   .total-income-title h4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .total-income-title span {
     display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
   }
 
   .report-chart-right-content {

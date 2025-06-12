@@ -1,4 +1,5 @@
 import React from "react";
+import DoughnutChart from "./DoughnutChart";
 
 export default function TotalIncomeChart() {
   return (
@@ -9,7 +10,9 @@ export default function TotalIncomeChart() {
       </div>
 
       <div className="totla-income-content">
-        <div className="total-content-charts"> </div>
+        <div className="total-content-charts"> 
+          <DoughnutChart />
+        </div>
 
         <a href="#"> مشاهده جزییات</a>
       </div>
